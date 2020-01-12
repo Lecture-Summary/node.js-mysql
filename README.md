@@ -4,6 +4,9 @@
 
 ## Github의 취약성 알림 대처방법
 
+    npm update "name"
+    npm -D install "name"
+
 https://blog.sonim1.com/225
 
 ## npm install

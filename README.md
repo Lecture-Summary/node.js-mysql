@@ -35,3 +35,14 @@ https://www.npmjs.com/package/mysql
     npm install -S mysql
 
 -S 또는 --save를 사용하면 package.json의 dependencies에 mysql 모듈을 추가해준다.
+
+##
+
+    db.query(`SELECT * FROM topic WHERE id=${queryData.id}`, function(error2,topic) {})
+    db.query(`SELECT * FROM topic WHERE id=?`, [queryData.id], function(error2,topic) {})
+
+database가 가지고 있는 코드의 특성에 의해서 공격을 당할 수 있다.
+
+그래서 id=?로 하고 [queryData.id \] 라고 하는 것이 좋다.
+
+?에 자동으로 치환되서 들어가게 되어있다.

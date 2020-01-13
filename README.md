@@ -36,7 +36,7 @@ https://www.npmjs.com/package/mysql
 
 -S 또는 --save를 사용하면 package.json의 dependencies에 mysql 모듈을 추가해준다.
 
-##
+## 데이터베이스 보안
 
     db.query(`SELECT * FROM topic WHERE id=${queryData.id}`, function(error2,topic) {})
     db.query(`SELECT * FROM topic WHERE id=?`, [queryData.id], function(error2,topic) {})
@@ -46,3 +46,15 @@ database가 가지고 있는 코드의 특성에 의해서 공격을 당할 수 
 그래서 id=?로 하고 [queryData.id \] 라고 하는 것이 좋다.
 
 ?에 자동으로 치환되서 들어가게 되어있다.
+
+## 삽입된 행의 id
+
+    function(error, result) {
+        if (error) {
+            throw error;
+        }
+        response.writeHead(302, { Location: `/?id=${result.insertId}` });
+        response.end();
+    }
+
+result.insertId 로 알 수 있다.
